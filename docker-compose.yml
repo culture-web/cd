@@ -1,4 +1,4 @@
-version: '1'
+version: "1"
 
 services:
   fe:
@@ -9,7 +9,7 @@ services:
     image: culture4web/culture-web-be:latest
     ports:
       - "3001:3001"
-  microservice:
-    image: culture4web/culture-web-microservices:latest
+  char-recognition:
+    image: culture4web/culture-web-microservices:char-recognition_latest
     ports:
       - "5000:5000"
