@@ -1,5 +1,3 @@
-version: "1"
-
 services:
   fe:
     image: culture4web/culture-web-fe:latest
@@ -7,9 +5,7 @@ services:
       - "80:80"
   be:
     image: culture4web/culture-web-be:latest
-    ports:
-      - "3001:3001"
+    # ports:
+    #   - "3001:3001"
   char-recognition:
     image: culture4web/culture-web-microservices:char-recognition_latest
-    ports:
-      - "5000:5000"
