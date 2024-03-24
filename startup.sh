@@ -3,16 +3,16 @@
 cd /home/ubuntu/cd
 
 # Stop running containers
-docker-compose stop
+sudo docker compose stop
 
 # Remove stopped containers
-docker-compose rm -f
+sudo docker compose rm -f
 
 # git pull latest changes
 git pull https://github.com/culture-web/cd.git
 
 # Pull fresh images
-docker-compose pull
+sudo docker compose pull
 
 # Start Docker Compose services in detached mode
-docker-compose up
+sudo docker compose up

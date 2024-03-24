@@ -3,6 +3,8 @@ services:
     image: culture4web/culture-web-fe:latest
     ports:
       - "80:80"
+      - "443:80"
+
   be:
     image: culture4web/culture-web-be:latest
     # ports:
