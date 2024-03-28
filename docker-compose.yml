@@ -3,11 +3,9 @@ services:
     image: culture4web/culture-web-fe:latest
     ports:
       - "80:80"
-      - "443:443"
 
   be:
     image: culture4web/culture-web-be:latest
-    # ports:
-    #   - "3001:3001"
+
   char-recognition:
     image: culture4web/culture-web-microservices:char-recognition_latest
