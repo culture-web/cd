@@ -1,11 +1,32 @@
+version: "3"
+
 services:
   fe:
     image: culture4web/culture-web-fe:latest
-    ports:
-      - "80:80"
+    networks:
+      - app-network
 
   be:
     image: culture4web/culture-web-be:latest
+    networks:
+      - app-network
+
+  nginx:
+    build: ./nginx
+    ports:
+      - 80:80
+    depends_on:
+      - fe
+      - be
+      - char-recognition
+    networks:
+      - app-network
 
   char-recognition:
     image: culture4web/culture-web-microservices:char-recognition_latest
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
