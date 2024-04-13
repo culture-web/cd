@@ -2,12 +2,12 @@ version: "3"
 
 services:
   fe:
-    image: culture4web/culture-web-fe:latest
+    image: culture4web/culture-web-fe:v1.0.0
     networks:
       - app-network
 
   be:
-    image: culture4web/culture-web-be:latest
+    image: culture4web/culture-web-be:v1.0.0
     networks:
       - app-network
 
@@ -23,7 +23,7 @@ services:
       - app-network
 
   char-recognition:
-    image: culture4web/culture-web-microservices:char-recognition_latest
+    image: culture4web/culture-web-microservices:char-recognition_v1.0.0
     networks:
       - app-network
 
