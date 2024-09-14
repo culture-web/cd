@@ -19,11 +19,23 @@ services:
       - fe
       - be
       - char-recognition
+      - expression-recognition
+      - face-detection
     networks:
       - app-network
 
   char-recognition:
-    image: culture4web/culture-web-microservices:char-recognition_v1.0.0
+    image: culture4web/culture-web-microservices:char-recognition_dev-latest
+    networks:
+      - app-network
+
+  expression-recognition:
+    image: culture4web/culture-web-microservices:expression-recognition_dev-latest
+    networks:
+      - app-network
+
+  face-detection:
+    image: culture4web/culture-web-microservices:face-detection_dev-latest
     networks:
       - app-network
 
