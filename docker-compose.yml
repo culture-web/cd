@@ -7,7 +7,7 @@ services:
       - app-network
 
   be:
-    image: culture4web/culture-web-be:v1.1
+    image: culture4web/culture-web-be:v1.2
     networks:
       - app-network
 
@@ -31,11 +31,6 @@ services:
 
   expression-recognition:
     image: culture4web/culture-web-microservices:expression-recognition_v1.1
-    networks:
-      - app-network
-
-  face-detection:
-    image: culture4web/culture-web-microservices:face-detection_v1.1
     networks:
       - app-network
 
