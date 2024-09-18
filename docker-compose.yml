@@ -2,12 +2,12 @@ version: "3"
 
 services:
   fe:
-    image: culture4web/culture-web-fe:v1.0.0
+    image: culture4web/culture-web-fe:v1.2
     networks:
       - app-network
 
   be:
-    image: culture4web/culture-web-be:v1.1
+    image: culture4web/culture-web-be:v1.2
     networks:
       - app-network
 
@@ -20,7 +20,6 @@ services:
       - be
       - char-recognition
       - expression-recognition
-      - face-detection
     networks:
       - app-network
 
@@ -31,11 +30,6 @@ services:
 
   expression-recognition:
     image: culture4web/culture-web-microservices:expression-recognition_v1.1
-    networks:
-      - app-network
-
-  face-detection:
-    image: culture4web/culture-web-microservices:face-detection_v1.1
     networks:
       - app-network
 
