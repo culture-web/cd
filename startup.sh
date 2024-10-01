@@ -15,4 +15,4 @@ git pull https://github.com/culture-web/cd.git
 sudo docker compose pull
 
 # Start Docker Compose services in detached mode
-sudo docker compose up
+sudo docker compose up -d
