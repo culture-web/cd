@@ -7,7 +7,7 @@ services:
       - app-network
 
   be:
-    image: culture4web/culture-web-be:v1.2
+    image: culture4web/culture-web-be:test
     networks:
       - app-network
 
@@ -24,12 +24,17 @@ services:
       - app-network
 
   char-recognition:
-    image: culture4web/culture-web-microservices:char-recognition_v1.1
+    image: culture4web/culture-web-microservices:char-recognition_test
     networks:
       - app-network
 
   expression-recognition:
-    image: culture4web/culture-web-microservices:expression-recognition_v1.1
+    image: culture4web/culture-web-microservices:expression-recognition_test
+    networks:
+      - app-network
+
+  face-detection:
+    image: culture4web/culture-web-microservices:face-detection_test
     networks:
       - app-network
 
