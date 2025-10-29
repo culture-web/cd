@@ -9,7 +9,8 @@ sudo docker compose stop
 sudo docker compose rm -f
 
 # git pull latest changes
-git pull https://github.com/culture-web/cd.git
+# UPDATE: SKIP RUNNING THIS COMMAND IN VM CD DIRECTORY TO AVOID OVERWRITING LOCAL CHANGES
+# git pull https://github.com/culture-web/cd.git
 
 # Pull fresh images
 sudo docker compose pull
