@@ -2,7 +2,7 @@ version: "3"
 
 services:
   fe:
-    image: culture4web/culture-web-fe:v2.3.0
+    image: culture4web/culture-web-fe:v2.2.0
     networks:
       - app-network
 
