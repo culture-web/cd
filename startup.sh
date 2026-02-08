@@ -26,7 +26,8 @@ sudo docker compose rm -f
 # git pull https://github.com/culture-web/cd.git
 
 # Pull fresh images
-sudo docker compose pull
+sudo docker compose --env-file .env.production pull
+
 
 # Start Docker Compose services in detached mode with .env.production file
 sudo docker compose --env-file .env.production up -d

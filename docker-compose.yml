@@ -53,7 +53,7 @@ services:
       - "5432:5432"
     volumes:
       - local_pgdata:/var/lib/postgresql/data
-      - ../culture-web-be/sql/local_rag_setup.sql:/docker-entrypoint-initdb.d/local_rag_setup.sql:ro
+      - ./init/local_rag_setup.sql:/docker-entrypoint-initdb.d/local_rag_setup.sql:ro
     networks:
       - app-network
     restart: unless-stopped
