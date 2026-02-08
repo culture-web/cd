@@ -15,6 +15,22 @@ if [ ! -f .env.production ]; then
   exit 1
 fi
 
+# Check if culture-web-be uploads folder exists
+if [ ! -d ../culture-web-be/uploads ]; then
+  echo "ERROR: culture-web-be/uploads folder not found!"
+  echo "Please ensure the uploads folder exists at: ../culture-web-be/uploads"
+  echo ""
+  exit 1
+fi
+
+# Check if init folder exists
+if [ ! -d ./init ]; then
+  echo "ERROR: init folder not found!"
+  echo "Please copy init/local_rag_setup.sql to cd_new/init/"
+  echo ""
+  exit 1
+fi
+
 # Stop running containers
 sudo docker compose stop
 
