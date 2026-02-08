@@ -26,7 +26,7 @@ fi
 # Check if init folder exists
 if [ ! -d ./init ]; then
   echo "ERROR: init folder not found!"
-  echo "Please copy init/local_rag_setup.sql to cd_new/init/"
+  echo "Please ensure ./init/local_rag_setup.sql exists"
   echo ""
   exit 1
 fi
