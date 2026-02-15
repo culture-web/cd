@@ -2,6 +2,35 @@
 
 cd /home/ubuntu/cd
 
+# Check if .env.production file exists
+if [ ! -f .env.production ]; then
+  echo "ERROR: .env.production file not found!"
+  echo "Please create .env.production with database credentials:"
+  echo ""
+  echo "Example:"
+  echo "  LOCAL_DB_USER=xxx_db_user"
+  echo "  LOCAL_DB_PASSWORD=xxx_secure_password"
+  echo "  LOCAL_DB_NAME=xxx_db_name"
+  echo ""
+  exit 1
+fi
+
+# Check if culture-web-be uploads folder exists
+if [ ! -d ../culture-web-be/uploads ]; then
+  echo "ERROR: culture-web-be/uploads folder not found!"
+  echo "Please ensure the uploads folder exists at: ../culture-web-be/uploads"
+  echo ""
+  exit 1
+fi
+
+# Check if init folder exists
+if [ ! -d ./init ]; then
+  echo "ERROR: init folder not found!"
+  echo "Please ensure ./init/local_rag_setup.sql exists"
+  echo ""
+  exit 1
+fi
+
 # Stop running containers
 sudo docker compose stop
 
@@ -13,7 +42,8 @@ sudo docker compose rm -f
 # git pull https://github.com/culture-web/cd.git
 
 # Pull fresh images
-sudo docker compose pull
+sudo docker compose --env-file .env.production pull
 
-# Start Docker Compose services in detached mode
-sudo docker compose up -d
+
+# Start Docker Compose services in detached mode with .env.production file
+sudo docker compose --env-file .env.production up -d
