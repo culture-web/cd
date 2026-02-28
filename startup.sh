@@ -5,20 +5,20 @@ cd "$(dirname "$0")"
 # Check if .env.production file exists
 if [ ! -f .env.production ]; then
   echo "ERROR: .env.production file not found!"
-  echo "Please create .env.production with database credentials:"
+  echo "Please create .env.production with database and MinIO credentials:"
   echo ""
   echo "Example:"
   echo "  LOCAL_DB_USER=xxx_db_user"
   echo "  LOCAL_DB_PASSWORD=xxx_secure_password"
   echo "  LOCAL_DB_NAME=xxx_db_name"
-  echo ""
-  exit 1
-fi
-
-# Check if culture-web-be uploads folder exists
-if [ ! -d ../culture-web-be/uploads ]; then
-  echo "ERROR: culture-web-be/uploads folder not found!"
-  echo "Please ensure the uploads folder exists at: ../culture-web-be/uploads"
+  echo "  MINIO_ROOT_USER=minioadmin"
+  echo "  MINIO_ROOT_PASSWORD=minioadmin"
+  echo "  MINIO_ACCESS_KEY=minioadmin"
+  echo "  MINIO_SECRET_KEY=minioadmin"
+  echo "  MINIO_ENDPOINT=minio"
+  echo "  MINIO_PORT=9000"
+  echo "  MINIO_BUCKET=knowledge-base"
+  echo "  MINIO_USE_SSL=false"
   echo ""
   exit 1
 fi

@@ -2,16 +2,22 @@ version: "3"
 
 services:
   fe:
-    image: culture4web/culture-web-fe:v2.6.0
+    image: culture4web/culture-web-fe:v2.7.0
     networks:
       - app-network
 
   be:
-    image: culture4web/culture-web-be:v2.7.0
-    volumes:
-      - ../culture-web-be/uploads:/uploads
+    image: culture4web/culture-web-be:v2.8.0
     depends_on:
-      - local-postgres      
+      - local-postgres
+      - minio
+    environment:
+      - MINIO_ENDPOINT=${MINIO_ENDPOINT}
+      - MINIO_PORT=${MINIO_PORT}
+      - MINIO_ACCESS_KEY=${MINIO_ACCESS_KEY}
+      - MINIO_SECRET_KEY=${MINIO_SECRET_KEY}
+      - MINIO_BUCKET=${MINIO_BUCKET}
+      - MINIO_USE_SSL=${MINIO_USE_SSL}
     networks:
       - app-network
 
@@ -41,6 +47,22 @@ services:
     image: culture4web/culture-web-microservices:face-detection_v2.1.0
     networks:
       - app-network
+
+  minio:
+    image: minio/minio:RELEASE.2025-09-07T16-13-09Z
+    container_name: minio
+    command: server /data --console-address ":9001"
+    environment:
+      - MINIO_ROOT_USER=${MINIO_ROOT_USER}
+      - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+    networks:
+      - app-network
+    restart: unless-stopped
     
   local-postgres:
     image: pgvector/pgvector:pg16
@@ -65,3 +87,4 @@ networks:
 
 volumes:
   local_pgdata:
+  minio_data:
