@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /home/ubuntu/cd
+cd "$(dirname "$0")"
 
 # Check if .env.production file exists
 if [ ! -f .env.production ]; then
