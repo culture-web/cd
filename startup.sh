@@ -1,24 +1,24 @@
 #!/bin/bash
 
-cd /home/ubuntu/cd
+cd "$(dirname "$0")"
 
 # Check if .env.production file exists
 if [ ! -f .env.production ]; then
   echo "ERROR: .env.production file not found!"
-  echo "Please create .env.production with database credentials:"
+  echo "Please create .env.production with database and MinIO credentials:"
   echo ""
   echo "Example:"
   echo "  LOCAL_DB_USER=xxx_db_user"
   echo "  LOCAL_DB_PASSWORD=xxx_secure_password"
   echo "  LOCAL_DB_NAME=xxx_db_name"
-  echo ""
-  exit 1
-fi
-
-# Check if culture-web-be uploads folder exists
-if [ ! -d ../culture-web-be/uploads ]; then
-  echo "ERROR: culture-web-be/uploads folder not found!"
-  echo "Please ensure the uploads folder exists at: ../culture-web-be/uploads"
+  echo "  MINIO_ROOT_USER=xxx_minio_user"
+  echo "  MINIO_ROOT_PASSWORD=xxx_secure_password"
+  echo "  MINIO_ACCESS_KEY=xxx_minio_access_key"
+  echo "  MINIO_SECRET_KEY=xxx_minio_secret_key"
+  echo "  MINIO_ENDPOINT=xxx_minio_endpoint"
+  echo "  MINIO_PORT=xxx_minio_port"
+  echo "  MINIO_BUCKET=xxx_minio_bucket"
+  echo "  MINIO_USE_SSL=false"
   echo ""
   exit 1
 fi
