@@ -13,12 +13,6 @@ if [ ! -f .env.production ]; then
   echo "  LOCAL_DB_NAME=xxx_db_name"
   echo "  MINIO_ROOT_USER=xxx_minio_user"
   echo "  MINIO_ROOT_PASSWORD=xxx_secure_password"
-  echo "  MINIO_ACCESS_KEY=xxx_minio_access_key"
-  echo "  MINIO_SECRET_KEY=xxx_minio_secret_key"
-  echo "  MINIO_ENDPOINT=xxx_minio_endpoint"
-  echo "  MINIO_PORT=xxx_minio_port"
-  echo "  MINIO_BUCKET=xxx_minio_bucket"
-  echo "  MINIO_USE_SSL=false"
   echo ""
   exit 1
 fi
@@ -32,10 +26,10 @@ if [ ! -d ./init ]; then
 fi
 
 # Stop running containers
-sudo docker compose stop
+sudo docker compose --env-file .env.production stop
 
 # Remove stopped containers
-sudo docker compose rm -f
+sudo docker compose --env-file .env.production rm -f
 
 # git pull latest changes
 # UPDATE: SKIP RUNNING THIS COMMAND IN VM CD DIRECTORY TO AVOID OVERWRITING LOCAL CHANGES
