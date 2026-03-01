@@ -11,13 +11,6 @@ services:
     depends_on:
       - local-postgres
       - minio
-    environment:
-      - MINIO_ENDPOINT=${MINIO_ENDPOINT}
-      - MINIO_PORT=${MINIO_PORT}
-      - MINIO_ACCESS_KEY=${MINIO_ACCESS_KEY}
-      - MINIO_SECRET_KEY=${MINIO_SECRET_KEY}
-      - MINIO_BUCKET=${MINIO_BUCKET}
-      - MINIO_USE_SSL=${MINIO_USE_SSL}
     networks:
       - app-network
 
