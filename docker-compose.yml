@@ -1,5 +1,3 @@
-version: "3"
-
 services:
   fe:
     image: culture4web/culture-web-fe:v2.12.1
