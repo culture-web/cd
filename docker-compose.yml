@@ -25,17 +25,17 @@ services:
       - app-network
 
   char-recognition:
-    image: culture4web/culture-web-microservices:char-recognition_v2.1.0
+    image: culture4web/culture-web-microservices:char-recognition_v2.1.1
     networks:
       - app-network
 
   expression-recognition:
-    image: culture4web/culture-web-microservices:expression-recognition_v2.1.0
+    image: culture4web/culture-web-microservices:expression-recognition_v2.1.1
     networks:
       - app-network
   
   face-detection:
-    image: culture4web/culture-web-microservices:face-detection_v2.1.0
+    image: culture4web/culture-web-microservices:face-detection_v2.1.1
     networks:
       - app-network
 
