@@ -52,7 +52,7 @@ sudo docker compose --env-file .env.production config --quiet
 
 # Download new images while the existing containers remain running
 echo "Pulling Docker images..."
-sudo docker compose --env-file .env.production pull
+sudo docker compose --env-file .env.production pull --ignore-pull-failures
 
 # Stop running containers
 echo "Stopping existing containers..."
