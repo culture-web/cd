@@ -1,6 +1,6 @@
 services:
   fe:
-    image: culture4web/culture-web-fe:v2.12.2
+    image: culture4web/culture-web-fe:v2.12.3
     networks:
       - app-network
 
