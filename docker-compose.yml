@@ -5,7 +5,7 @@ services:
       - app-network
 
   be:
-    image: culture4web/culture-web-be:v2.12.1
+    image: culture4web/culture-web-be:v2.12.2
     depends_on:
       - local-postgres
       - minio
