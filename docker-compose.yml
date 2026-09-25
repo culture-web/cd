@@ -1,11 +1,11 @@
 services:
   fe:
-    image: culture4web/culture-web-fe:v2.12.3
+    image: culture4web/culture-web-fe:v2.13.0
     networks:
       - app-network
 
   be:
-    image: culture4web/culture-web-be:v2.12.2
+    image: culture4web/culture-web-be:v2.13.0
     depends_on:
       - local-postgres
       - minio
