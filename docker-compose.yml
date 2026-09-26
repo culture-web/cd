@@ -1,11 +1,21 @@
+x-logging: &default-logging
+  driver: "json-file"
+  options:
+    max-size: "20m"
+    max-file: "3"
+
 services:
   fe:
     image: culture4web/culture-web-fe:v2.13.0
+    restart: unless-stopped
+    logging: *default-logging
     networks:
       - app-network
 
   be:
     image: culture4web/culture-web-be:v2.13.0
+    restart: unless-stopped
+    logging: *default-logging
     depends_on:
       - local-postgres
       - minio
@@ -19,6 +29,8 @@ services:
     build: ./nginx
     ports:
       - 80:80
+    restart: unless-stopped
+    logging: *default-logging
     depends_on:
       - fe
       - be
@@ -29,16 +41,22 @@ services:
 
   char-recognition:
     image: culture4web/culture-web-microservices:char-recognition_v2.1.1
+    restart: unless-stopped
+    logging: *default-logging
     networks:
       - app-network
 
   expression-recognition:
     image: culture4web/culture-web-microservices:expression-recognition_v2.1.1
+    restart: unless-stopped
+    logging: *default-logging
     networks:
       - app-network
   
   face-detection:
     image: culture4web/culture-web-microservices:face-detection_v2.1.1
+    restart: unless-stopped
+    logging: *default-logging
     networks:
       - app-network
 
@@ -57,6 +75,7 @@ services:
     networks:
       - app-network
     restart: unless-stopped
+    logging: *default-logging
     
   local-postgres:
     image: pgvector/pgvector:pg16
@@ -74,6 +93,7 @@ services:
     networks:
       - app-network
     restart: unless-stopped
+    logging: *default-logging
 
 networks:
   app-network:
