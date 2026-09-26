@@ -46,6 +46,14 @@ fi
 echo "Updating deployment files from origin/develop..."
 git pull --ff-only origin develop
 
+# Pre-flight disk space check (warn and prune dangling resources if under 3GB free)
+AVAILABLE_KB=$(df -k . | awk 'NR==2 {print $4}')
+if [ "$AVAILABLE_KB" -lt 3145728 ]; then
+  echo "WARNING: Low disk space detected (< 3GB free). Cleaning up dangling Docker resources before pull..."
+  sudo docker image prune -f || true
+  sudo docker builder prune -f || true
+fi
+
 # Validate the updated Docker Compose configuration
 echo "Validating Docker Compose configuration..."
 sudo docker compose --env-file .env.production config --quiet
@@ -66,5 +74,14 @@ sudo docker compose --env-file .env.production rm -f
 echo "Starting containers..."
 sudo docker compose --env-file .env.production up -d
 
+# Clean up superseded Docker images and build cache to prevent disk accumulation
+echo "Pruning superseded Docker images and build cache..."
+sudo docker image prune -f || true
+sudo docker builder prune -f || true
+
 echo "Deployment completed successfully."
 sudo docker compose --env-file .env.production ps
+
+echo ""
+echo "Current disk usage:"
+df -h .
