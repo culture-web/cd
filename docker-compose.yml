@@ -9,6 +9,9 @@ services:
     depends_on:
       - local-postgres
       - minio
+    environment:
+      - SOCLAAS_API_KEY=
+      - GROQ_MODEL=openai/gpt-oss-120b
     networks:
       - app-network
 
