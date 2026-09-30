@@ -9,6 +9,10 @@ services:
     depends_on:
       - local-postgres
       - minio
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - OPENAI_MODEL=${OPENAI_MODEL:-gpt-6-luna}
+      - LLM_PROVIDER=${LLM_PROVIDER:-openai}
     networks:
       - app-network
 
