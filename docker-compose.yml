@@ -13,7 +13,7 @@ services:
       - app-network
 
   be:
-    image: culture4web/culture-web-be:v2.14.0
+    image: culture4web/culture-web-be:v2.14.1
     restart: unless-stopped
     logging: *default-logging
     depends_on:
