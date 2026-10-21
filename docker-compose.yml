@@ -13,14 +13,13 @@ services:
       - app-network
 
   be:
-    image: culture4web/culture-web-be:v2.14.1
+    image: culture4web/culture-web-be:v2.14.4
     restart: unless-stopped
     logging: *default-logging
     depends_on:
       - local-postgres
       - minio
     environment:
-      - SOCLAAS_API_KEY=
       - GROQ_MODEL=openai/gpt-oss-120b
     networks:
       - app-network
